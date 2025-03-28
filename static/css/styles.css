@@ -1,0 +1,208 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Variables for Consistent Theming */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --background-light: #f9f9f9;
+  --text-color: #333;
+  --white: #fff;
+  --border-color: #ccc;
+}
+
+/* Responsive Typography */
+html {
+  font-size: 16px;
+}
+
+/* Body Styling */
+body {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Main Layout */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+/* Upper Part Responsive Layout */
+.upper-part {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Sections */
+section {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 
+    0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075),
+    0 16px 16px hsl(0deg 0% 0% / 0.075);
+  margin-bottom: 1.25rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Calculator Section */
+.calculator {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Response Section */
+.response {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+.response p {
+  margin-bottom: 0.5rem;
+}
+
+/* Form Styling */
+.calculator-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.calculator-form input,
+.calculator-form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.calculator-form input:focus,
+.calculator-form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Displayed Equation */
+.displayed-equation {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #555;
+  word-break: break-all;
+}
+
+/* Calculate Button */
+.calculate-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.calculate-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+/* Charts Section */
+.charts {
+  width: 100%;
+  max-width: 800px;
+}
+
+.plotly-container {
+  width: 100%;
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.75rem;
+  }
+
+  body {
+    padding: 0.5rem;
+  }
+}
+
+/* Improve Mobile Experience */
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .calculator-form input,
+  .calculator-form select {
+    padding: 0.5rem;
+  }
+
+  .calculate-button {
+    width: 100%;
+  }
+}

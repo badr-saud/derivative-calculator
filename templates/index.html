@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Derivative Calculator</title>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--styles -->
+    <link
+      rel="stylesheet""
+      href="{{ url_for('static', path='css/styles.css') }}"
+    />
+    <!--Rendering a Latex equations-->
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+    <!--Interactive Charts in JS-->
+    <script id="chart-data" type="application/json">
+      {
+          "xValues": {{ x_val|safe }},
+          "fValues": {{ f_val|safe }},
+          "fdValues": {{ f_der_val|safe }}
+      }
+    </script>
+    <script src="{{ url_for('static', path='js/main.js') }}" defer></script>
+    <script
+      src="https://cdn.plot.ly/plotly-3.0.1.min.js"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <!--Header start-->
+    <header class="header">
+      <h1>Derivative Calculator</h1>
+    </header>
+    <!--Header End-->
+
+    <main>
+
+      <div class="upper-part">
+        
+      <section class="calculator">
+        
+      <form class="calculator-form" action="/calc" method="post">
+        <label for="equation">Write the equation</label>
+        <input
+          type="text"
+          name="equation"
+          id="equation"
+          placeholder="x**2+3*x+1"
+          required
+        />
+
+
+        <label for="variable">Select the variable</label>
+        <select id="variable" name="variable" required>
+          <option value="x">x</option>
+          <option value="y">y</option>
+          <option value="z">z</option>
+          <option value="a">a</option>
+        </select>
+
+        <label for="order">Write the order of the derviative</label>
+        <input type="number" name="order" value="order" id="order" />
+
+        <button class="calculate-button" type="submit">Calculate</button>
+      </form>
+      </section>
+
+      <section class="response">
+        
+      <!--response if any-->
+      {% if eq is defined %}
+      <p>Equation:</p>
+      <ams>$${{ eq }}$$</ams> {% endif %} {% if order is defined %}
+      <p>Order: {{ order }}</p>
+      {% endif %} {% if der is defined %}
+      <p>Derviative: </p>
+      <ams>$${{ der }}$$</ams> {% endif %}
+      </section>
+      </div>
+      <!--figure palceholder-->
+      <section class="charts">
+        <div class="plotly-chart" id="myDiv"></div>
+      </section>
+    </main>
+  </body>
+</html>
